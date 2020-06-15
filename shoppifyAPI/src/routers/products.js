@@ -19,7 +19,7 @@ router.get("/products",async (req,res) => {
 })
 
 router.get("/productInfo", async (req,res) => {
-    console.log(req.query)
+    
     const product = await Products.findById(req.query.productid.toString())
     res.send(product)
 })
