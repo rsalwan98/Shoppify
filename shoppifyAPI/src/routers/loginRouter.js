@@ -23,8 +23,6 @@ router.post("/login", async (req,res) => {
             error: err.toString()
         })
     }
-
-    res.send(user);
 })
 
 router.delete('/signout', async (req,res) => {

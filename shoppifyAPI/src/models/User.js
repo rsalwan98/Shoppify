@@ -3,11 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
-    
-    _id: {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true
-    },
+
     email : {
         type : String,
         required : true,
@@ -22,7 +18,8 @@ const userSchema = new mongoose.Schema({
         type : String
     },
     cart : {
-        type : mongoose.Schema.Types.ObjectId
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Cart'
     }
 })
 

@@ -7,28 +7,26 @@ const mongoose = require('mongoose')
 router.post('/signup', async (req,res) => {
     
     const user = new User(req.body);
-    user._id= new mongoose.Types.ObjectId();
     user.password = await bcrypt.hash(user.password,8);
 
     const cart = new Cart({
-        _id : new mongoose.Types.ObjectId(),
-        productId : [],
-        userId : user._id
+        productId : []
     }
     )
 
-    user.cart= cart._id;
     cart.save(function(err){
         if(err){
-            res.send(err);
+            console.log(err);
         }
     })
 
+    user.cart=cart;
     user.save(function(err) {
         if(err){
-            res.send(err);
+            console.log(err)
         }
     })
+    res.send(user)
 })
 
 
